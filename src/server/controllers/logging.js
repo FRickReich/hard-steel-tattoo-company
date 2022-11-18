@@ -1,28 +1,28 @@
-import { logger } from '../utils';
+import utils from './../utils';
 
 const postLogging = (req, res, next) => {
     const msg = req.body.msg;
-    const level = req.body.level;
+    const level = req.body.level || 'info';
 
     switch (level) {
         case 'trace':
-            logger.trace(msg);
+            utils.logger.trace(msg);
             break;
         case 'debug':
-            logger.debug(msg);
+            utils.logger.debug(msg);
             break;
         case 'warn':
-            logger.warn(msg);
+            utils.logger.warn(msg);
             break;
         case 'error':
-            logger.error(msg);
+            utils.logger.error(msg);
             break;
         case 'fatal':
-            logger.fatal(msg);
+            utils.logger.fatal(msg);
             break;
         default:
         case 'info':
-            logger.info(msg);
+            utils.logger.info(msg);
             break;
     }
 

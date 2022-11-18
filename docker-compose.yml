@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+
+  database:
+    image: mongo
+    container_name: database
+    environment: 
+      - MONGO_INITDB_DATABASE=web
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=developmentPassword
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+    networks:
+      - develop
+
+  web:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        environment: development
+    container_name: web
+    volumes:
+      - ./src:/app/src
+    command: npm run start:dev
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - develop
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: curl --fail -s http://localhost:3010/health || exit 1
+      interval: 30s
+      timeout: 15s
+      retries: 3
+
+networks:
+    develop:

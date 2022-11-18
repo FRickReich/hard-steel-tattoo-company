@@ -13,7 +13,7 @@ export default () => {
             <h1>404</h1>
             <h2>Nicht Gefunden</h2>
 
-            <button onClick={() => navigate(-1)}>Zurück</button>
+            <button onClick={() => navigate('/')}>Zurück</button>
         </div>
     );
 };

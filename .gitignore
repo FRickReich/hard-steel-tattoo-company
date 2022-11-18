@@ -1,3 +1,5 @@
 _legacy
 node_modules
+mongo-volume
+dist
 .env

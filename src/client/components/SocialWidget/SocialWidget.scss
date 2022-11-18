@@ -1,0 +1,49 @@
+.SocialWidget {
+    position: absolute;
+    z-index: 100;
+    min-width: 5em;
+    height: 2em;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row;
+    right: 1em;
+    top: 1em;
+
+    gap: 0.5em;
+
+    .SocialWidget--item {
+        width: 2em;
+        height: 2em;
+        cursor: pointer;
+
+        .SocialWidget--item--whatsapp {
+            margin-top: -0.2em;
+
+            &:hover {
+                fill: #ffff;
+            }
+        }
+
+        .SocialWidget--item--fb {
+            margin-top: -0.25em;
+
+            &:hover {
+                fill: #ffff;
+            }
+        }
+
+        .SocialWidget--item--insta {
+            margin-top: -0.3em;
+            margin-left: -0.1em;
+
+            &:hover {
+                fill: #ffff;
+            }
+        }
+        .SocialWidget--item--tiktok {
+            &:hover {
+                fill: #ffff;
+            }
+        }
+    }
+}
